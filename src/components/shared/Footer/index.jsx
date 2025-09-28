@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Footer() {
   return (
     <>
@@ -5,24 +7,24 @@ export default function Footer() {
         <footer className="py-3 my-4">
           <ul className="nav justify-content-center border-bottom pb-3 mb-3">
             <li className="nav-item">
-              <a href="#" className="nav-link px-2 text-body-secondary">
+              <Link to="/" className="nav-link px-2 text-body-secondary">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" className="nav-link px-2 text-body-secondary">
-                Book
-              </a>
+              <Link to="/books" className="nav-link px-2 text-body-secondary">
+                Books
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" className="nav-link px-2 text-body-secondary">
+              <Link to="/team" className="nav-link px-2 text-body-secondary">
                 Team
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a href="#" className="nav-link px-2 text-body-secondary">
+              <Link to="/contact" className="nav-link px-2 text-body-secondary">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
           <p className="text-center text-body-secondary">&copy;2025 Nashi</p>
