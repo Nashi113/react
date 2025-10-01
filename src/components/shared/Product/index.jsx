@@ -1,329 +1,61 @@
-export default function Product() {
+import books from "../../../utils/books";
+import { useRef } from "react";
+import styles from "./Produk.module.css";
+
+function Product() {
+  let produkList = [...books];
+  const produkContainerRef = useRef(null);
+  const handleClick = () => {
+    const newProduk = {
+      id: produkList.length + 1,
+      title: "Hinamatsuri",
+      author: "Masao Ohtake",
+      year: 2018,
+      description:
+        "While reveling in the successful clinching of a prized vase for his collection.....",
+      image: "../../../../img/hina.jpg",
+    };
+    produkList.push(newProduk);
+    if (produkContainerRef.current) {
+      const newProductElement = document.createElement("div");
+      newProductElement.className = styles.card;
+      newProductElement.innerHTML = `
+        <img src="${newProduk.image}" alt="${newProduk.title}" />
+        <h3>${newProduk.title}</h3>
+        <p>${newProduk.author}</p>
+        <p>${newProduk.year}</p>
+        <p>${newProduk.description}</p>
+    `;
+      produkContainerRef.current.appendChild(newProductElement);
+    }
+    console.log("Produk Terbaru", produkList);
+    alert("Produk baru berhasil di tambahkan");
+  };
+
   return (
     <>
-      <section className="py-5 text-center container">
-        <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">Best Seller</h1>
-            <p className="lead text-body-secondary">
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don’t simply skip over it entirely.
-            </p>
-            <p>
-              <a href="#" className="btn btn-primary my-2 m-2">
-                View
-              </a>
-              <a href="#" className="btn btn-secondary my-2">
-                Other Books
-              </a>
-            </p>
-          </div>
+      <div className={styles.produkContainer}>
+        <h1 className={styles.title}>Daftar Produk</h1>
+        <p className={styles.subtitle}>
+          Koleksi Buku pilihan yang menajdi <strong>Best Seller</strong>.
+        </p>
+        <div className={styles.cardContainer} ref={produkContainerRef}>
+          {produkList.map((item) => (
+            <div key={item.id} className={styles.card}>
+              <img src={item.image} alt={item.title} />
+              <h3>{item.title}</h3>
+              <p>{item.author}</p>
+              <p>{item.year}</p>
+              <p>{item.description}</p>
+            </div>
+          ))}
         </div>
-      </section>
-      <div className="album py-5 bg-body-tertiary">
-        <div className="container">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card shadow-sm">
-                <img
-                  src="https://picsum.photos/100/55"
-                  className="card-img-top"
-                  alt="Thumbnail"
-                />
-                <div className="card-body">
-                  <p className="card-text">
-                    This is a wider card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <button onClick={handleClick} className={styles.addButton}>
+          Tambah Produk
+        </button>
       </div>
     </>
   );
 }
+
+export default Product;

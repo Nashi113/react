@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages";
-import Books from "./pages/Books";
 import PagesTeam from "./pages/Team";
 import PagesContact from "./pages/Contact";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
+import Books from "./pages/Books";
 
 function App() {
   return (
